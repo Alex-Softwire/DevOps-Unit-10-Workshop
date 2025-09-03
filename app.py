@@ -10,7 +10,7 @@ from scheduled_jobs import initialise_scheduled_jobs
 from products import create_product_download
 import requests
 
-configure_azure_monitor()
+configure_azure_monitor(enable_live_metrics = True)
 
 from flask import Flask, render_template, request
 app = Flask(__name__)
