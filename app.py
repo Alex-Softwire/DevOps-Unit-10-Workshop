@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request
+
+from azure.monitor.opentelemetry import configure_azure_monitor
 from datetime import datetime, timezone
 import logging
 logging.basicConfig(level=logging.INFO)
@@ -9,8 +10,12 @@ from scheduled_jobs import initialise_scheduled_jobs
 from products import create_product_download
 import requests
 
+configure_azure_monitor()
+
+from flask import Flask, render_template, request
 app = Flask(__name__)
 app.config.from_object(Config)
+
 
 initialise_database(app)
 initialise_scheduled_jobs(app)
