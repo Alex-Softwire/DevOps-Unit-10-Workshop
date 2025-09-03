@@ -47,7 +47,7 @@ def process_orders(app):
         app.logger.exception("Error processing order {id}".format(id = order.id))
         app.logger.exception("ERRRRORRRRRR {e}".format(e = str(e)))
         if (order):
-            order.status = "Error"
+            order.set_as_processed()
             save_order(order)
 
 def get_queue_of_orders_to_process():
