@@ -8,7 +8,7 @@ jobs:
     env:
         # SET THESE
         ACR_ADMIN_USERNAME: "awscr"
-        ACR_LOGIN_SERVER_URL: "https://$aws-order-processing-app:LYuvs8WJpLkls47Sja2Qk1EN0efnlceQaLZcGmRBqgaWh5A2xhTfma2jJ9iK@aws-order-processing-app.scm.azurewebsites.net/api/registry/webhook"
+        ACR_LOGIN_SERVER_URL: "awscr.azurecr.io"
         # SET THESE IN GITHUB
         ACR_ADMIN_PASSWORD: '${{ secrets.ACR_ADMIN_PASSWORD }}'
     # DECIDE WHETHER YOU WANT A BRANCH CHECK - if so remove the other "if"
