@@ -46,9 +46,12 @@ def process_orders(app):
     except Exception as e:
         app.logger.exception("Error processing order {id}".format(id = order.id))
         app.logger.exception("ERRRRORRRRRR {e}".format(e = str(e)))
+        if (order):
+            order.status = "Error"
+            save_order(order)
 
 def get_queue_of_orders_to_process():
     allOrders = get_all_orders()
-    queuedOrders = filter(lambda order: order.date_processed == None, allOrders)
+    queuedOrders = filter(lambda order: order.date_processed == None and order.status != "Error", allOrders)
     sortedQueue = sorted(queuedOrders, key= lambda order: order.date_placed)
     return list(sortedQueue)
